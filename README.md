@@ -1,73 +1,109 @@
-# React + TypeScript + Vite
+# Rust Experience
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Промо-лендинг и каталог донат-китов для Minecraft-сервера в стилистике игры **Rust**. Тёмная палитра, плакатная типографика, акценты ржавого оранжевого.
 
-Currently, two official plugins are available:
+> 🚧 **В активной разработке.** Hero, секция фич и каталог китов готовы. Дальше — таймер вайпа, FAQ, корзина в localStorage и страница `/shop`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🌐 Демо
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+_Live demo появится после деплоя на Vercel._
 
-## Expanding the ESLint configuration
+## 📸 Превью
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+_Скриншот будет добавлен после завершения первой версии._
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ✨ Что внутри
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Hero-секция** с тёмным градиентом, плакатным заголовком и парой CTA-кнопок (primary + secondary)
+- **"Почему мы"** — 4 карточки фичей в адаптивной сетке (1 / 2 / 4 колонки)
+- **"Донат-киты"** — 4 карточки товаров с иконкой, названием, описанием и ценой
+- **Модальные окна** для каждого кита — управление состоянием через `useState`, закрытие по клику на overlay/крестик/Escape
+- **Кастомная типографика** — Russo One через Tailwind v4 `@theme`
+- **Mobile-first адаптив** — все секции реагируют на ширину экрана через `sm:` / `md:` / `lg:` префиксы Tailwind
+
+---
+
+## 🛠 Стек
+
+| Слой | Технология |
+|---|---|
+| Фреймворк | **React 18** + функциональные компоненты |
+| Язык | **TypeScript** |
+| Стили | **Tailwind CSS v4** (с `@theme` и адаптивными префиксами) |
+| Сборщик | **Vite** |
+| Линтер | ESLint |
+
+В планах: React Router, localStorage для корзины, fetch для имитации API.
+
+---
+
+## 🚀 Запуск локально
+
+```bash
+# 1. Клонируй репозиторий
+git clone https://github.com/FullvarFront/experience-rust.git
+cd experience-rust
+
+# 2. Установи зависимости
+npm install
+
+# 3. Запусти dev-сервер
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Откроется на [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Доступные скрипты
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Команда | Что делает |
+|---|---|
+| `npm run dev` | Запуск dev-сервера с HMR |
+| `npm run build` | Production-сборка в папку `dist/` |
+| `npm run preview` | Локальный preview production-сборки |
+| `npm run lint` | Прогон ESLint |
+
+---
+
+## 📁 Структура
+
 ```
+src/
+├── components/
+│   ├── Hero.tsx           # Главный экран с заголовком и CTA
+│   ├── Features.tsx       # Секция "Почему мы" + список карточек
+│   ├── Feature.tsx        # Одна карточка фичи (с props)
+│   ├── DonateKits.tsx     # Секция магазина + список карточек
+│   └── DonateKit.tsx      # Одна карточка кита с модальным окном
+├── App.tsx                # Корневой компонент, склеивает секции
+├── main.tsx               # Точка входа React
+└── index.css              # Tailwind v4 + кастомные @theme переменные
+```
+
+---
+
+## 🗺 Roadmap
+
+- [x] Hero-секция с адаптивом
+- [x] Секция "Почему мы" с компонентом `Feature` и `props`
+- [x] Секция "Донат-киты" с модалками через `useState`
+- [ ] Секция "Дата следующего вайпа" с таймером (`useEffect`)
+- [ ] FAQ (раскрывающиеся вопросы)
+- [ ] Футер
+- [ ] Корзина в `localStorage`
+- [ ] Страница `/shop` через React Router
+- [ ] Заглушка формы оплаты
+- [ ] Деплой на Vercel
+
+---
+
+## 👤 Автор
+
+**Дмитрий Рябинин** ([@FullvarFront](https://github.com/FullvarFront))
+
+---
+
+_Pet-project для портфолио. Не для коммерческого использования._
