@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type DonateKitProps = {
   icon: string;
@@ -10,11 +10,23 @@ type DonateKitProps = {
 function DonateKit({ icon, name, description, price }: DonateKitProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <>
       <div
         onClick={() => setIsOpen(true)}
-        className="flex flex-col h-full gap-2 bg-stone-900 border border-stone-800 rounded-lg p-6 text-center cursor-pointer"
+        className="flex flex-col h-full gap-2 bg-stone-900 border border-stone-800 rounded-lg p-6 text-center cursor-pointer select-none"
       >
         <p className="text-5xl mb-4">{icon}</p>
         <h3 className="text-white text-xl font-bold">{name}</h3>
