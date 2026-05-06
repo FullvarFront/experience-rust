@@ -16,11 +16,12 @@ function FaqItem({ question, answer }: FaqItemProps) {
       >
         <h3 className="text-white text-lg font-bold">{question}</h3>
         <span
-          className={`text-orange-500 text-2xl transition-transform ${
-            isOpen ? "rotate-45" : ""
+          aria-hidden="true"
+          className={`text-orange-500 transition-transform text-3xl ${
+            isOpen ? "rotate-90" : ""
           }`}
         >
-          +
+          ›
         </span>
       </button>
       <div

@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
+import type { CartItem } from "../types";
 
 type DonateKitProps = {
   icon: string;
   name: string;
   description: string;
   price: number;
+  onAddToCart: (kit: CartItem) => void;
+  isInCart: boolean;
+  onRemoveFromCart: (name: string) => void;
 };
 
-function DonateKit({ icon, name, description, price }: DonateKitProps) {
+function DonateKit({
+  icon,
+  name,
+  description,
+  price,
+  onAddToCart,
+  isInCart,
+  onRemoveFromCart,
+}: DonateKitProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -32,10 +44,27 @@ function DonateKit({ icon, name, description, price }: DonateKitProps) {
         <h3 className="text-white text-xl font-bold">{name}</h3>
         <p className="text-stone-400 flex-grow">{description}</p>
         <p className="text-orange-500 text-2xl font-black">{price} ₽</p>
-
-        <button className="mt-auto border border-stone-700 hover:bg-stone-800 hover:border-stone-500 text-white font-semibold px-6 py-3 rounded transition cursor-pointer">
-          В корзину
-        </button>
+        {isInCart ? (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemoveFromCart(name);
+            }}
+            className="mt-auto border border-stone-700 bg-stone-900 hover:bg-stone-600 text-white font-semibold px-6 py-3 rounded transition cursor-pointer"
+          >
+            Убрать из корзины
+          </button>
+        ) : (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onAddToCart({ icon, name, price });
+            }}
+            className="mt-auto border border-stone-700 hover:bg-stone-800 hover:border-stone-500 text-white font-semibold px-6 py-3 rounded transition cursor-pointer"
+          >
+            В корзину
+          </button>
+        )}
       </div>
 
       {isOpen && (
