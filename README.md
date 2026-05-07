@@ -31,13 +31,13 @@
 
 ## 🛠 Стек
 
-| Слой | Технология |
-|---|---|
-| Фреймворк | **React 18** + функциональные компоненты |
-| Язык | **TypeScript** |
-| Стили | **Tailwind CSS v4** (с `@theme` и адаптивными префиксами) |
-| Сборщик | **Vite** |
-| Линтер | ESLint |
+| Слой      | Технология                                                |
+| --------- | --------------------------------------------------------- |
+| Фреймворк | **React 18** + функциональные компоненты                  |
+| Язык      | **TypeScript**                                            |
+| Стили     | **Tailwind CSS v4** (с `@theme` и адаптивными префиксами) |
+| Сборщик   | **Vite**                                                  |
+| Линтер    | ESLint                                                    |
 
 В планах: React Router, localStorage для корзины, fetch для имитации API.
 
@@ -61,12 +61,12 @@ npm run dev
 
 ### Доступные скрипты
 
-| Команда | Что делает |
-|---|---|
-| `npm run dev` | Запуск dev-сервера с HMR |
-| `npm run build` | Production-сборка в папку `dist/` |
+| Команда           | Что делает                          |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Запуск dev-сервера с HMR            |
+| `npm run build`   | Production-сборка в папку `dist/`   |
 | `npm run preview` | Локальный preview production-сборки |
-| `npm run lint` | Прогон ESLint |
+| `npm run lint`    | Прогон ESLint                       |
 
 ---
 
@@ -108,7 +108,7 @@ src/
 
 ## 👤 Автор
 
-**Дмитрий Рябинин** ([@FullvarFront](https://github.com/FullvarFront))
+**Дмитрий Рябинин** ([@FullvarFront](https://github.com/FullvarFront), [Telegram](https://t.me/failgen))
 
 ---
 
