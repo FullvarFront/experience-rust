@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import DonateKits from "./components/DonateKits";
-import NextWipe from "./components/NextWipe";
-import Faq from "./components/Faq";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import type { CartItem } from "./types";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
+import Shop from "./pages/Shop";
+import Rules from "./pages/Rules";
 
 function App() {
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -35,15 +34,20 @@ function App() {
   return (
     <>
       <Header cartCount={cart.length} onCartClick={() => setIsCartOpen(true)} />
-      <Hero />
-      <Features />
-      <DonateKits
-        cart={cart}
-        onAddToCart={addToCart}
-        onRemoveFromCart={removeFromCart}
-      />
-      <NextWipe />
-      <Faq />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              cart={cart}
+              onAddToCart={addToCart}
+              onRemoveFromCart={removeFromCart}
+            />
+          }
+        />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/Rules" element={<Rules />} />
+      </Routes>
       <Footer />
       <Cart
         items={cart}
