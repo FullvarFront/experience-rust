@@ -1,38 +1,12 @@
 import DonateKit from "./DonateKit";
 import type { CartItem } from "../types";
+import { kits } from "../data/kits";
 
 type DonateKitsProps = {
   cart: CartItem[];
   onAddToCart: (kit: CartItem) => void;
   onRemoveFromCart: (name: string) => void;
 };
-
-const kitList = [
-  {
-    icon: "⛏️",
-    name: "Rider",
-    description: "Всегда нужно с чего-то начинать!",
-    price: 49.99,
-  },
-  {
-    icon: "🛡️",
-    name: "Boss",
-    description: "Cтань настоящим боссом нашего сервера!",
-    price: 124.99,
-  },
-  {
-    icon: "🔥",
-    name: "Elit",
-    description: "Идеальная привелегия для опытных игроков.",
-    price: 299.99,
-  },
-  {
-    icon: "⚔️",
-    name: "Magnat",
-    description: "Покажи всему серверу на сколько ты силён!",
-    price: 499.99,
-  },
-];
 
 function DonateKits({ cart, onAddToCart, onRemoveFromCart }: DonateKitsProps) {
   return (
@@ -42,7 +16,7 @@ function DonateKits({ cart, onAddToCart, onRemoveFromCart }: DonateKitsProps) {
       </h2>
 
       <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {kitList.map((kit) => {
+        {kits.slice(0, 4).map((kit) => {
           const isInCart = cart.some((item) => item.name === kit.name);
           return (
             <DonateKit

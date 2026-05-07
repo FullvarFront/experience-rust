@@ -45,8 +45,17 @@ function App() {
             />
           }
         />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/Rules" element={<Rules />} />
+        <Route
+          path="/shop"
+          element={
+            <Shop
+              cart={cart}
+              onAddToCart={addToCart}
+              onRemoveFromCart={removeFromCart}
+            />
+          }
+        />
+        <Route path="/rules" element={<Rules />} />
       </Routes>
       <Footer />
       <Cart
