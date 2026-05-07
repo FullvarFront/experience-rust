@@ -1,5 +1,7 @@
 # Rust Experience
 
+🌐 **Live demo:** [experience-rust.vercel.app](https://experience-rust.vercel.app)
+
 Промо-лендинг и каталог донат-китов для Minecraft-сервера в стилистике игры **Rust**. Тёмная палитра, плакатная типографика, акценты ржавого оранжевого.
 
 > 🚧 **В активной разработке.** Hero, секция фич и каталог китов готовы. Дальше — таймер вайпа, FAQ, корзина в localStorage и страница `/shop`.
@@ -8,7 +10,7 @@
 
 ## 🌐 Демо
 
-_Live demo появится после деплоя на Vercel._
+[experience-rust.vercel.app](https://experience-rust.vercel.app) — задеплоено на Vercel, автодеплой при пуше в `main`.
 
 ## 📸 Превью
 
